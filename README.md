@@ -1,6 +1,6 @@
 Authentication with Next-Auth
 
-Next13.4.2
+NextJs 13.4.2
 
 ServerSide Protected Routes
 
