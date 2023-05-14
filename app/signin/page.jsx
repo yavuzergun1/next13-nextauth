@@ -1,8 +1,17 @@
 import Button from "../components/Button";
 import GoogleSignInButton from "../components/GoogleSignInButton";
 import TextField from "../components/TextField";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
-const SignInPage = () => {
+
+const SignInPage = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/protected/server");
+  }
   return (
     <section className="flex min-h-full overflow-hidden pt-16 sm:py-28">
       <div className="mx-auto flex w-full max-w-2xl flex-col px-4 sm:px-6">
