@@ -1,6 +1,8 @@
 import Providers from "./Providers";
-import "./globals.css";
 import { Inter } from "next/font/google";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,10 +13,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <Providers>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </Providers>
+    <html
+      lang="en"
+      className={`${inter.className} h-full scroll-smooth antialiased`}
+    >
+      <body className="flex h-full flex-col">
+        <Providers>
+          <Header />
+          <main className="grow">{children}</main>
+          <Footer />
+        </Providers>
+      </body>
+    </html>
   );
 }
